@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://npmcdn.com/@reactivex/rxjs@5.0.0-beta.3/dist/global/Rx.umd.js"></script>
+<script>
+
+    const observable = Rx.Observable.interval(1000);
+    const observer = {
+      next: val => console.log(val)
+    };
+
+    observable
+      .filter(val => val % 2 === 0)
+      .subscribe(observer);
+</script>
+</body>
+</html>

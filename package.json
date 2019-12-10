@@ -1,0 +1,21 @@
+{
+  "name": "demo_jscpd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jscpd": "jscpd .",
+    "lint": "yarn eslint ./src/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jscpd": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}

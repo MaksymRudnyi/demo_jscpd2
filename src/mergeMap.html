@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="input1"/>
+<input type="text" id="input2"/>
+<div>Combined value: <span></span></div>
+<script src="https://npmcdn.com/@reactivex/rxjs@5.0.0-beta.3/dist/global/Rx.umd.js"></script>
+<script>
+    const input1 = document.querySelector('#input1');
+    const input2 = document.querySelector('#input2');
+    const span = document.querySelector('span');
+
+    const observer = {
+      next: value => {
+      	console.log(value);
+      	span.innerText = value;
+      },
+      error: err => console.log('Error: ', err),
+      complete: () => console.log('Completed')
+    };
+
+    const obs1 = Rx.Observable.fromEvent(input1, 'input');
+    const obs2 = Rx.Observable.fromEvent(input2, 'input');
+
+    obs1.mergeMap(event1 => {
+    	return obs2.map(event2 => event1.target.value + ' ' + event2.target.value)
+    }).subscribe(observer);
+
+</script>
+</body>
+</html>
